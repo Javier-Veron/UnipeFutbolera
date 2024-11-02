@@ -1,0 +1,38 @@
+“La Unipe Futbolera”
+
+En la UNIPE se tomó la decisión de armar y participar en un torneo de fútbol interuniversitario. El torneo estará
+conformado por distintas universidades, cada una de ellas tendrá un nombre de equipo, un registro/historial de partidos
+anados/perdidos/empatados y una cantidad fanáticos que los siguen con fervor al momento de iniciar el torneo. Al mismo
+tiempo cada equipo tendrá su plantel de jugadores titulares y suplentes, pero solo podrá tener un arquero  entre todos
+los jugadores (cuya altura no deberá ser menor a 1,80 mts). De los jugadores se conoce el nombre, el apellido, su fuerza
+ de tiro (entre 1 y 10), su altura y si son zurdos. Los jugadores pueden ser catalogados por su rol de
+ Delantero/Central/Defensor/Arquero. Cada uno de ellos tiene dos constantes:
+
+Precisión al arco, siendo 10/6/4/2 respectivamente.
+Habilidad defensiva, siendo 2/4/8/10 respectivamente.
+
+En el torneo solo se pueden agregar o quitar equipos antes de que el mismo comience. Una vez comenzado se sortearan los
+partidos a jugar en cada fecha. Cada equipo deberá jugar dos veces contra cada rival. El partido ganado otorgará 3
+puntos y aumentará la cantidad de fanáticos un 20% de la cantidad que tenía al momento de jugarse el partido, si empata
+obtendrá 1 punto y la cantidad de fanáticos se verá disminuida un 5%, en caso de que pierda  no obtendrá puntos y sus
+fanáticos disminuyen un 15%.
+
+
+Se lesiona el arquero y se desea saber si algún otro jugador, de los suplentes puede ocupar su puesto, para ello debe
+medir no menos de 1,80mts si ninguno cumple con esta condición, se determina que ese equipo perderá el partido.
+
+
+Si los equipos tienen más de la mitad de sus integrantes de rol delantero o defensor tendrán el estado de “Salvajes” o
+“Impenetrables”
+
+
+
+Se debe poder registrar en cada fecha el resultado de los distintos partidos
+
+Si hay partido entre dos equipos salvajes , entre dos impenetrables, o uno de cada uno, el partido resultará en empate,
+en cualquier otro caso, ganará el equipo con mayor cantidad de puntos de ataque, que es la sumatoria de de los puntos de
+ataque de cada jugador titular (precisión al arco*fuerza de tiro).
+
+
+Se desea conocer la fecha con mayor cantidad de empates.
+
