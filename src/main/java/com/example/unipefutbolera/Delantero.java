@@ -21,5 +21,8 @@ public class Delantero extends Jugador {
     public String rolJugador(){
         return "Delantero";
     }
+    public int calcularPuntosDeAtaque(){
+        return precisionAlArco*super.getFuerzaDeTiro();
+    }
 
 }

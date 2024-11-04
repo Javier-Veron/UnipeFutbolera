@@ -15,6 +15,7 @@ public abstract class Jugador {
     public abstract float chanceDeHacerGol();
     public abstract float chanceGolDeCabeza();
     public abstract String rolJugador();
+    public abstract int calcularPuntosDeAtaque();
 
 
     //GETTERS AND SETTERS

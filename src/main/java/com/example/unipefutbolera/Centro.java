@@ -22,4 +22,7 @@ public class Centro extends Jugador {
         return "Centro";
     }
 
+    public int calcularPuntosDeAtaque(){
+        return precisionAlArco*super.getFuerzaDeTiro();
+    }
 }

@@ -20,4 +20,7 @@ public class Defensor extends Jugador {
     public String rolJugador(){
         return "Defensor";
     }
+    public int calcularPuntosDeAtaque(){
+        return precisionAlArco*super.getFuerzaDeTiro();
+    }
 }

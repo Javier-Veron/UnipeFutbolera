@@ -26,13 +26,10 @@ Si los equipos tienen más de la mitad de sus integrantes de rol delantero o def
 “Impenetrables”
 
 
-
-Se debe poder registrar en cada fecha el resultado de los distintos partidos
-
 Si hay partido entre dos equipos salvajes , entre dos impenetrables, o uno de cada uno, el partido resultará en empate,
 en cualquier otro caso, ganará el equipo con mayor cantidad de puntos de ataque, que es la sumatoria de de los puntos de
 ataque de cada jugador titular (precisión al arco*fuerza de tiro).
 
 
-Se desea conocer la fecha con mayor cantidad de empates.
+
 

@@ -9,12 +9,37 @@ public class Equipo {
 
     String nombre;
     int fanaticos;
-    ArrayList<ResultadoPartido> historialResultados = new ArrayList<ResultadoPartido>();
-    ArrayList<Jugador> jugadoresTitulares = new ArrayList<Jugador>();
-    ArrayList<Jugador> jugadoresSuplentes = new ArrayList<Jugador>();
-    boolean tieneArquero;
+    ArrayList<ResultadoPartido> historialResultados = new ArrayList<>();
+    ArrayList<Jugador> jugadoresTitulares = new ArrayList<>();
+    ArrayList<Jugador> jugadoresSuplentes = new ArrayList<>();
+    boolean tieneArquero = false;
 
     //METODOS
+    public void agregarJugadorSuplente(Jugador jugador){
+        if(jugador.getClass() != Arquero.class){
+            jugadoresSuplentes.add(jugador);
+        }
+        else{
+            if(!tieneArquero){
+                jugadoresSuplentes.add(jugador);
+                tieneArquero = true;
+            }
+        }
+
+    }
+
+    public void agregarJugadorTitular(Jugador jugador){
+        if(jugador.getClass() != Arquero.class){
+            jugadoresTitulares.add(jugador);
+        }
+        else{
+            if(!tieneArquero){
+                jugadoresTitulares.add(jugador);
+                tieneArquero = true;
+            }
+        }
+
+    }
 
     public void cambioJugadores(int posicionListaTitular, int posicionListaSuplente){
 
@@ -28,7 +53,11 @@ public class Equipo {
         jugadoresTitulares.add(cambioATitular);
 
     }
+    public void agregarResultadoPartido(ResultadoPartido resultadoObtenido){
 
+        historialResultados.add(resultadoObtenido);
+
+    }
 
     public int calcularPuntaje(){
         int resultado = 0;
@@ -52,7 +81,7 @@ public class Equipo {
 
     public ArrayList<Jugador> jugadoresZurdos(){
 
-        ArrayList<Jugador> listaResultado = new ArrayList<Jugador>();
+        ArrayList<Jugador> listaResultado = new ArrayList<>();
         for(Jugador j : jugadoresTitulares){
             if (j.esZurdo()){
                 listaResultado.add(j);
@@ -82,12 +111,15 @@ public class Equipo {
         return resultado;
     }
 
-    public boolean hayArqueroSuplente(){
-        for(Jugador j : jugadoresTitulares){
-            if (j.getAltura()>=1.80){
-                return true;
-            }
+    public void seLesionaElArquero(){
+        tieneArquero = false;
+        if(hayArqueroSuplente()){
+            tieneArquero = true;
         }
+    }
+
+    public boolean hayArqueroSuplente(){
+
         for(Jugador j : jugadoresSuplentes){
             if (j.getAltura()>=1.80){
                 return true;
@@ -142,6 +174,14 @@ public class Equipo {
             if(r.getClass() == PartidoEmpatado.class){
                 resultado += 1;
             }
+        }
+        return resultado;
+    }
+
+    public int calcularPuntosDeAtaque(){
+        int resultado = 0;
+        for(Jugador j: jugadoresTitulares){
+            resultado += j.calcularPuntosDeAtaque();
         }
         return resultado;
     }

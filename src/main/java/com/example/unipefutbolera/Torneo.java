@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Torneo {
 
     ArrayList<Equipo> equiposInscriptos = new ArrayList<Equipo>();
-
     ArrayList<Fecha>  fechasSorteadas = new ArrayList<Fecha>();
 
     public void inscribirEquipo(Equipo equipo){
@@ -86,30 +85,68 @@ public class Torneo {
         return resultado;
     }
 
-
-
-    /*public void sortearPartidos(){
+    public void sortearPartidos(){
         ArrayList<Partido>  combinacionDePartidosPosibles = new ArrayList<Partido>();
         for(Equipo e: equiposInscriptos){
-            for(int i=0;i<equiposInscriptos.size();i++){
-                Partido fechaPosible = new Partido(e.getNombre(), equiposInscriptos.get(i).getNombre());
+            for (Equipo equiposInscripto : equiposInscriptos) {
+                Partido posiblePartido = new Partido(e, equiposInscripto);
 
-                if (!fechaPosible.equipo1.equals(fechaPosible.equipo2)){
-                    combinacionDePartidosPosibles.add(fechaPosible);
+                if (!posiblePartido.equipo1.equals(posiblePartido.equipo2)) {
+                    combinacionDePartidosPosibles.add(posiblePartido);
                 }
             }
         }
 
-        for (int i=0; i<combinacionDePartidosPosibles.size();i++){
+        int tamanioListaCombinaciones = combinacionDePartidosPosibles.size();
 
-            if (combinacionDePartidosPosibles.get(i).equipo1 || combinacionDePartidosPosibles.get(i).equipo2)
+        while(tamanioListaCombinaciones>0) {
+
+            Fecha fecha = new Fecha();
+            ArrayList<Integer> partidosAQuitar = new ArrayList<Integer>();
+
+            for (int i = 0; i < combinacionDePartidosPosibles.size(); i++) {
+                Equipo equipo1 = combinacionDePartidosPosibles.get(i).equipo1;
+                Equipo equipo2 = combinacionDePartidosPosibles.get(i).equipo2;
+
+                if(fecha.getPartidos().isEmpty()){
+                    fecha.agregarPartido(equipo1,equipo2);
+                }
+                else {
+                    for (Partido p : fecha.getPartidos()) {
+                        if (!equipo1.equals(p.getEquipo1()) && !equipo1.equals(p.getEquipo2()) && !equipo2.equals(p.getEquipo1()) && !equipo2.equals(p.getEquipo2())) {
+                            fecha.agregarPartido(equipo1, equipo2);
+                            partidosAQuitar.add(i);
+                        }
+                    }
+                }
+            }
+            fechasSorteadas.add(fecha);
+
+            for(int j: partidosAQuitar.reversed()){
+                combinacionDePartidosPosibles.remove(j);
+            }
+            tamanioListaCombinaciones = combinacionDePartidosPosibles.size();
 
         }
 
 
+    }
+    public int fechaConMayorEmpates(){
+        int resultado = -1;
+        if (!fechasSorteadas.isEmpty()){
+            for(int i=0;i<fechasSorteadas.size();i++ ){
+                if (resultado == -1){
+                    resultado = i;
+                }
+                else{
+                    if(fechasSorteadas.get(resultado).contadorDeEmpates() < fechasSorteadas.get(i).contadorDeEmpates()){
+                        resultado = i;
+                    }
+                }
+            }
+        }
 
-
-    }*/
-
+        return resultado;
+        }
 
 }

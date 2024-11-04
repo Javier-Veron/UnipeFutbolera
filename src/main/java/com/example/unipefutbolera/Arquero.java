@@ -24,4 +24,8 @@ public class Arquero extends Jugador{
         return "Arquero";
     }
 
+    public int calcularPuntosDeAtaque(){
+        return precisionAlArco*super.getFuerzaDeTiro();
+    }
+
 }
