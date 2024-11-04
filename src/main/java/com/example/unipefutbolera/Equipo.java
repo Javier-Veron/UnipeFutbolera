@@ -1,63 +1,18 @@
 package com.example.unipefutbolera;
-
-//cada una de ellas tendrá un nombre de equipo, un registro/historial de partidos
-//ganados/perdidos/empatados y una cantidad fanáticos que los siguen con fervor al momento de iniciar el torneo
-
 import java.util.ArrayList;
 
 public class Equipo {
 
-    String nombre;
-    int fanaticos;
-    ArrayList<ResultadoPartido> historialResultados = new ArrayList<>();
-    ArrayList<Jugador> jugadoresTitulares = new ArrayList<>();
-    ArrayList<Jugador> jugadoresSuplentes = new ArrayList<>();
-    boolean tieneArquero = false;
+    //Atributos
 
-    //METODOS
-    public void agregarJugadorSuplente(Jugador jugador){
-        if(jugador.getClass() != Arquero.class){
-            jugadoresSuplentes.add(jugador);
-        }
-        else{
-            if(!tieneArquero){
-                jugadoresSuplentes.add(jugador);
-                tieneArquero = true;
-            }
-        }
+    private String nombre;
+    private int fanaticos;
+    private ArrayList<ResultadoPartido> historialResultados = new ArrayList<>();
+    private ArrayList<Jugador> jugadoresTitulares = new ArrayList<>();
+    private ArrayList<Jugador> jugadoresSuplentes = new ArrayList<>();
+    private boolean tieneArquero = false;
 
-    }
-
-    public void agregarJugadorTitular(Jugador jugador){
-        if(jugador.getClass() != Arquero.class){
-            jugadoresTitulares.add(jugador);
-        }
-        else{
-            if(!tieneArquero){
-                jugadoresTitulares.add(jugador);
-                tieneArquero = true;
-            }
-        }
-
-    }
-
-    public void cambioJugadores(int posicionListaTitular, int posicionListaSuplente){
-
-        Jugador cambioASuplente = jugadoresTitulares.get(posicionListaTitular);
-        Jugador cambioATitular = jugadoresSuplentes.get(posicionListaSuplente);
-
-        jugadoresTitulares.remove(posicionListaTitular);
-        jugadoresSuplentes.remove(posicionListaSuplente);
-
-        jugadoresSuplentes.add(cambioASuplente);
-        jugadoresTitulares.add(cambioATitular);
-
-    }
-    public void agregarResultadoPartido(ResultadoPartido resultadoObtenido){
-
-        historialResultados.add(resultadoObtenido);
-
-    }
+    //Consultas
 
     public int calcularPuntaje(){
         int resultado = 0;
@@ -109,13 +64,6 @@ public class Equipo {
             }
         }
         return resultado;
-    }
-
-    public void seLesionaElArquero(){
-        tieneArquero = false;
-        if(hayArqueroSuplente()){
-            tieneArquero = true;
-        }
     }
 
     public boolean hayArqueroSuplente(){
@@ -186,9 +134,60 @@ public class Equipo {
         return resultado;
     }
 
+    //METODOS
+    public void agregarJugadorSuplente(Jugador jugador){
+        if(jugador.getClass() != Arquero.class){
+            jugadoresSuplentes.add(jugador);
+        }
+        else{
+            if(!tieneArquero){
+                jugadoresSuplentes.add(jugador);
+                tieneArquero = true;
+            }
+        }
+
+    }
+
+    public void agregarJugadorTitular(Jugador jugador){
+        if(jugador.getClass() != Arquero.class){
+            jugadoresTitulares.add(jugador);
+        }
+        else{
+            if(!tieneArquero){
+                jugadoresTitulares.add(jugador);
+                tieneArquero = true;
+            }
+        }
+
+    }
+
+    public void cambioJugadores(int posicionListaTitular, int posicionListaSuplente){
+
+        Jugador cambioASuplente = jugadoresTitulares.get(posicionListaTitular);
+        Jugador cambioATitular = jugadoresSuplentes.get(posicionListaSuplente);
+
+        jugadoresTitulares.remove(posicionListaTitular);
+        jugadoresSuplentes.remove(posicionListaSuplente);
+
+        jugadoresSuplentes.add(cambioASuplente);
+        jugadoresTitulares.add(cambioATitular);
+
+    }
+
+    public void agregarResultadoPartido(ResultadoPartido resultadoObtenido){
+
+        historialResultados.add(resultadoObtenido);
+
+    }
+
+    public void seLesionaElArquero(){
+        tieneArquero = false;
+        if(hayArqueroSuplente()){
+            tieneArquero = true;
+        }
+    }
+
     //GETTERS AND SETTERS
-
-
     public String getNombre() {
         return nombre;
     }

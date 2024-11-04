@@ -2,9 +2,10 @@ package com.example.unipefutbolera;
 
 public class Partido {
 
-    Equipo equipo1,equipo2;
-    ResultadoPartido resultado1, resultado2;
+    private Equipo equipo1,equipo2;
+    private ResultadoPartido resultado1, resultado2;
 
+    //CONSTRUCTORES
     public Partido(Equipo equipo1, Equipo equipo2){
 
         this.equipo1 = equipo1;
@@ -14,7 +15,6 @@ public class Partido {
 
     }
 
-
     public Partido(Equipo equipo1, Equipo equipo2, ResultadoPartido resultado1, ResultadoPartido resultado2){
 
         this.equipo1 = equipo1;
@@ -23,6 +23,8 @@ public class Partido {
         this.resultado2 = resultado2;
 
     }
+
+    //METODOS
 
     public void jugarPartido(){
 

@@ -4,19 +4,18 @@ public abstract class Jugador {
 
     //ATRIBUTOS
 
-    String nombre, apellido;
-    int fuerzaDeTiro;
-    double altura;
-    boolean esZurdo;
+    private String nombre, apellido;
+    private int fuerzaDeTiro;
+    private double altura;
+    private boolean esZurdo;
 
 
-    //metodo Abstracto
+    //Metodo Abstracto
 
     public abstract float chanceDeHacerGol();
     public abstract float chanceGolDeCabeza();
     public abstract String rolJugador();
     public abstract int calcularPuntosDeAtaque();
-
 
     //GETTERS AND SETTERS
 
@@ -59,7 +58,6 @@ public abstract class Jugador {
     public void setEsZurdo(boolean esZurdo) {
         this.esZurdo = esZurdo;
     }
-
 
 
 }

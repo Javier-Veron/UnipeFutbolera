@@ -2,8 +2,12 @@ package com.example.unipefutbolera;
 
 public class PartidoEmpatado extends ResultadoPartido{
 
-    int puntos = 1;
-    double fanaticos = 0.95;
+    //Atributos
+
+    private int puntos = 1;
+    private double fanaticos = 0.95;
+
+    //Consultas
 
     public int puntos(){
         return puntos;

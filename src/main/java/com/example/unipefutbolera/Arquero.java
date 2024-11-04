@@ -2,11 +2,13 @@ package com.example.unipefutbolera;
 
 public class Arquero extends Jugador{
 
-    int precisionAlArco = 2;
-    int habilidadDefensiva = 10;
+    //Atributos
 
+    private int precisionAlArco = 2;
+    private int habilidadDefensiva = 10;
 
-    @Override
+    //Consultas
+
     public float chanceDeHacerGol() {
         if (super.esZurdo()){
             return (float) (precisionAlArco*0.5*super.getFuerzaDeTiro()*1.2);
@@ -28,4 +30,22 @@ public class Arquero extends Jugador{
         return precisionAlArco*super.getFuerzaDeTiro();
     }
 
+    //GETTERS AND SETTERS
+
+
+    public int getPrecisionAlArco() {
+        return precisionAlArco;
+    }
+
+    public void setPrecisionAlArco(int precisionAlArco) {
+        this.precisionAlArco = precisionAlArco;
+    }
+
+    public int getHabilidadDefensiva() {
+        return habilidadDefensiva;
+    }
+
+    public void setHabilidadDefensiva(int habilidadDefensiva) {
+        this.habilidadDefensiva = habilidadDefensiva;
+    }
 }

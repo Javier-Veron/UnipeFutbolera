@@ -4,23 +4,24 @@ import java.util.ArrayList;
 
 public class Fecha {
 
-    ArrayList<Partido> partidos = new ArrayList<Partido>();
+    //Atributos
+    private ArrayList<Partido> partidos = new ArrayList<>();
 
-
+    //METODOS
     public void jugarFecha(){
         for(Partido p: partidos){
             p.jugarPartido();
         }
     }
-
     public void agregarPartido(Equipo equipo1,Equipo equipo2){
         Partido nuevoPartido = new Partido(equipo1,equipo2);
         partidos.add(nuevoPartido);
     }
 
+    //Consultas
     public boolean fechaCerrada(){
         for(Partido p: partidos){
-            if((p.resultado1 == null)  || (p.resultado2 == null)){
+            if((p.getResultado1() == null)  || (p.getResultado2() == null)){
                 return false;
             }
 
@@ -32,7 +33,7 @@ public class Fecha {
         int resultado = 0;
         if(fechaCerrada()){
             for(Partido p: partidos){
-                if((p.resultado1.getClass() == PartidoEmpatado.class)  || p.resultado2.getClass() == PartidoEmpatado.class){
+                if((p.getResultado1().getClass() == PartidoEmpatado.class)  || p.getResultado2().getClass() == PartidoEmpatado.class){
                     resultado += 1;
                 }
             }
@@ -40,6 +41,8 @@ public class Fecha {
 
         return resultado;
     }
+
+    //GETTERS AND SETTERS
 
     public ArrayList<Partido> getPartidos() {
         return partidos;
